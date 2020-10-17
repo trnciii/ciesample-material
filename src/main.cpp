@@ -1,9 +1,10 @@
-
 #define GL_SILENCE_DEPRECATION
 #define GLFW_INCLUDE_GLU
 #include "GLFW/glfw3.h"
 #include <math.h>
 #include "box.hpp"
+
+#define MAXFRAME 300.0
 
 // 登場する関数
 void myinit(GLFWwindow** window);
@@ -66,7 +67,12 @@ int main(void)
     
     
     //イベント処理ループ
+    int frame = 0;
     do{
+        frame++;
+        if(MAXFRAME < frame)
+            frame = 0;
+
         display();
         glfwSwapBuffers(window);
         glfwPollEvents();
