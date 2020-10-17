@@ -135,7 +135,7 @@ glEnd();
 
 `glNormal3d()` で法線の設定をしています。これは手前の面なので、面の向きは z+ 方向ということになります。
 
-余談になりますが、法線と陰影の効果をみるため、球体を表示してみましょう。`display` を以下のように書き換えます。
+若干余談になりますが、法線と陰影の効果をみるため、球体を表示してみましょう。`display` を以下のように書き換えます。
 
 ```cpp
 void display()
@@ -169,6 +169,8 @@ void display()
 
 <img src="docs/sphere.png" width="300">
 
+ほかに表示できる形状については、このページの一番下[オブジェクトいろいろ](#オブジェクトいろいろ)で紹介しています。
+
 ### 色と質感
 照明計算を有効にするときは、物体の材質を`glMaterialfv`関数で設定します。
 
@@ -199,7 +201,7 @@ void display()
     gluSphere(sphere, 1.0, 32, 16);
 }
 ```
-使い方としては、 glColor3d(); と同じですね。３つのパラメータはそれぞれ、<br>
+使い方としては、 `glColor3d()` と同じです。３つのパラメータはそれぞれ、<br>
 `glMaterialfv(材質の適用する部分[＝表裏両面],　設定する材質の種類,　設定項目の引数)` です。
 
 2番目の引数である "設定する材質の種類" には以下のようなものがあり、対応して3番目の引数を与えます。
@@ -216,9 +218,9 @@ void display()
 <img src="docs/sphere_mtl.png" width="300">
 
 ```cpp
-glMaterialfv( GL_FRONT_AND_BACK, GL_DIFFUSE, red );
-glMaterialfv( GL_FRONT_AND_BACK, GL_SPECULAR, white);
-glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, 120 );
+glMaterialfv( GL_FRONT_AND_BACK, GL_DIFFUSE, red ); //拡散反射
+glMaterialfv( GL_FRONT_AND_BACK, GL_SPECULAR, white); // 鏡面反射
+glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, 120 ); // 鏡面反射の鋭さ
 ```
 
 ちなみに、色のalpha値を小さくすると半透明を表現できます。
@@ -256,41 +258,3 @@ glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, 120 );
 |![](http://www.design.kyushu-u.ac.jp/~rtsuruno/lectures/cge2020/img/material/solidcylind.gif)![](http://www.design.kyushu-u.ac.jp/~rtsuruno/lectures/cge2020/img/material/wirecylind.gif)|gluCylinder(オブジェクト, 底面の半径, 上面の半径, 高さ, 円周方向の分割数, 縦の分割数)|
 |![](http://www.design.kyushu-u.ac.jp/~rtsuruno/lectures/cge2020/img/material/soliddisk.gif)![](http://www.design.kyushu-u.ac.jp/~rtsuruno/lectures/cge2020/img/material/wiredisk.gif)|gluDisk(オブジェクト, 内の半径, 外の半径, 円周の分割数, 半径の分割数)|
 |![](http://www.design.kyushu-u.ac.jp/~rtsuruno/lectures/cge2020/img/material/solidpartial.gif)![](http://www.design.kyushu-u.ac.jp/~rtsuruno/lectures/cge2020/img/material/wirepartial.gif)|gluPartialDisk(オブジェクト, 内の半径, 外の半径, 円周の分割数, 半径の分割数, 開始角度, 扇の角度)|ed(180, 0, 1, 0);
-            makebox(0.3, 0.05, 1.2, GL_POLYGON);
-        glPopMatrix();
-
-        glPushMatrix(); // --- 口
-            glTranslated(0, -0.2, 0);
-            glRotated( 180, 0, 1, 0);
-            makebox(0.7, 0.05, 1.2, GL_POLYGON);
-        glPopMatrix();
-    glPopMatrix(); // 頭おわり
-
-
-    glPushMatrix();  //-- 右足
-        glTranslated(-0.35, -1.2, 0);
-        makebox(0.3, 1, 1, GL_POLYGON);
-    glPopMatrix();
-
-
-    glPushMatrix();  //-- 左足
-        glTranslated( 0.35, -1.2, 0);
-        makebox(0.3, 1, 1, GL_POLYGON);
-    glPopMatrix();
-
-
-    glPushMatrix();  //-- 右腕
-        glTranslated(-1.2, 0.35, 0);
-        makebox(1, 0.3, 1, GL_POLYGON);
-    glPopMatrix();
-
-
-    glPushMatrix();  //-- 左腕
-        glTranslated( 1.2, 0.35, 0);
-        makebox(1, 0.3, 1, GL_POLYGON);
-    glPopMatrix();
-
-glPopMatrix();
-
-```
-</details>
