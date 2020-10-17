@@ -17,9 +17,11 @@ void myinit(GLFWwindow** window)
     
     int w = 600; // ウィンドウの幅
     int h = 600; // ウィンドウの高さ
-    *window = glfwCreateWindow(w, h, "surface", NULL, NULL); // w*hの大きさで surface という名前のウィンドウをつくる
+    *window = glfwCreateWindow(w, h, "material", NULL, NULL); // w*hの大きさで material という名前のウィンドウをつくる
     glfwMakeContextCurrent(*window);
+    
     glClearColor(0, 0, 0, 1); // 背景色の設定
+    glEnable(GL_DEPTH_TEST);
     
     reshape(*window, w, h); // 視点の初期化をおこなう
 }
@@ -43,14 +45,12 @@ void reshape(GLFWwindow* window, int w, int h)
 //--描画内容--------------------------------------------------------------------
 void display(void)
 {
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 色と深度の初期化
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    // box.cpp内の関数を使ってボックスを描画。
-    // パラメータは、makebox(ｘ方向の長さ, y方向の長さ, z方向の長さ)
-    makebox(1.0,1.0,1.0);
+    makebox(1.0,1.0,1.0,GL_POLYGON);
 }
 
 //--メイン関数------------------------------------------------------------------
