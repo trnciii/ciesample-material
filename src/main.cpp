@@ -9,7 +9,7 @@
 // 登場する関数
 void myinit(GLFWwindow** window);
 void reshape(GLFWwindow* window, int w, int h);
-void display(void);
+void display(int frame);
 
 //--初期化—------------------------------------------------------------------
 void myinit(GLFWwindow** window)
@@ -44,7 +44,7 @@ void reshape(GLFWwindow* window, int w, int h)
 }
 
 //--描画内容--------------------------------------------------------------------
-void display(void)
+void display(int frame)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 色と深度の初期化
 
@@ -73,7 +73,7 @@ int main(void)
         if(MAXFRAME < frame)
             frame = 0;
 
-        display();
+        display(frame);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }while( !glfwWindowShouldClose(window) );//ウィンドウが表示されるかぎりループする
