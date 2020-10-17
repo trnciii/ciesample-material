@@ -31,6 +31,7 @@ void makebox(double width, double height, double length, GLenum type)
 
     //前面描画・黄
     glColor3d(1.0, 1.0, 0.0);
+    glNormal3d(0.0, 0.0, 1.0);
     glBegin(type);
         glVertex3dv(box[0]);
         glVertex3dv(box[1]);
@@ -39,7 +40,8 @@ void makebox(double width, double height, double length, GLenum type)
     glEnd();
 
     //後面描画・赤
-    glColor3d(1.0, 0.0, 0.0f);
+    glColor3d(1.0, 0.0, 0.0);
+    glNormal3d(0.0, 0.0, -1.0);
     glBegin(type);
         glVertex3dv(box[4]);
         glVertex3dv(box[5]);
@@ -48,7 +50,8 @@ void makebox(double width, double height, double length, GLenum type)
     glEnd();
     
     //上面描画・マゼンダ
-    glColor3d(1.0, 0.0, 1.0f);
+    glColor3d(1.0, 0.0, 1.0);
+    glNormal3d(0.0, 1.0, 0.0);
     glBegin(type);
         glVertex3dv(box[4]);
         glVertex3dv(box[0]);
@@ -57,7 +60,8 @@ void makebox(double width, double height, double length, GLenum type)
     glEnd();
 
     //右面描画・緑
-    glColor3d(0.0, 1.0, 0.0f);
+    glColor3d(0.0, 1.0, 0.0);
+    glNormal3d(1.0, 0.0, 0.0);
     glBegin(type);
         glVertex3dv(box[3]);
         glVertex3dv(box[2]);
@@ -66,7 +70,8 @@ void makebox(double width, double height, double length, GLenum type)
     glEnd();
 
     //左面描画・シアン
-    glColor3d(0.0, 1.0, 1.0f);
+    glColor3d(0.0, 1.0, 1.0);
+    glNormal3d(-1.0, 0.0, 0.0);
     glBegin(type);
         glVertex3dv(box[4]);
         glVertex3dv(box[5]);
@@ -75,7 +80,8 @@ void makebox(double width, double height, double length, GLenum type)
     glEnd();
     
     //下面描画・青
-    glColor3d(0.0, 0.0, 1.0f);
+    glColor3d(0.0, 0.0, 1.0);
+    glNormal3d(0.0, -1.0, 0.0);
     glBegin(type);
         glVertex3dv(box[6]);
         glVertex3dv(box[5]);
