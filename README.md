@@ -1,4 +1,5 @@
 この資料は、従来版の第5回 - 質感・マテリアル・ライティング に対応します。
+[このリポジトリ](https://github.com/trnciii/ciesample-material)からファイルをダウンロードしたら`sample.xcodeproj` を開き、実行できるか確認してください。
 
 ## 目次
 * [準備](#準備)
